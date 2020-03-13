@@ -39,41 +39,45 @@
         <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Mono.Android"/>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Xml.Linq"/>
-        <Reference Include="System.Xml"/>
+        <Reference Include="Mono.Android" />
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540"/>
-        <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1"/>
-        <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1"/>
-        <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1"/>
-        <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2.1"/>
-        <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1"/>
+        <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
+        <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
+        <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
+        <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
+        <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2.1" />
+        <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="MainActivity.cs"/>
-        <Compile Include="Resources\Resource.Designer.cs"/>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="MainActivity.cs" />
+        <Compile Include="Resources\Resource.Designer.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="Resources\AboutResources.txt"/>
-        <None Include="Assets\AboutAssets.txt"/>
-        <None Include="Properties\AndroidManifest.xml"/>
+        <None Include="Resources\AboutResources.txt" />
+        <None Include="Assets\AboutAssets.txt" />
+        <None Include="Properties\AndroidManifest.xml" />
     </ItemGroup>
     <ItemGroup>
-        <AndroidResource Include="Resources\layout\Tabbar.axml"/>
-        <AndroidResource Include="Resources\layout\Toolbar.axml"/>
-        <AndroidResource Include="Resources\values\styles.xml"/>
-        <AndroidResource Include="Resources\values\colors.xml"/>
+        <AndroidResource Include="Resources\layout\Tabbar.axml" />
+        <AndroidResource Include="Resources\layout\Toolbar.axml" />
+        <AndroidResource Include="Resources\values\styles.xml" />
+        <AndroidResource Include="Resources\values\colors.xml" />
     </ItemGroup>
     <ItemGroup>
+        <ProjectReference Include="..\Ganbari-Gate\Ganbari-Gate.csproj">
+          <Project>{794e27d1-b218-416d-8763-6c4356f8cbb8}</Project>
+          <Name>Ganbari-Gate</Name>
+        </ProjectReference>
         <ProjectReference Include="..\Ganbari_Gate\Ganbari_Gate.csproj">
             <Project>{C9D4CA61-96F0-49AD-9D92-8B21520CA20D}</Project>
             <Name>Ganbari_Gate</Name>
         </ProjectReference>
     </ItemGroup>
-    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets"/>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

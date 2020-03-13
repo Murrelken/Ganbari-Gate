@@ -7,7 +7,9 @@ namespace GanbariGate.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About,
+        DevelopmentTest,
+        DevelopmentTest2,
     }
     public class HomeMenuItem
     {

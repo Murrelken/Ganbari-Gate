@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GanbariGate.Models;
+using GanbariGate.Services;
 using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,20 +13,21 @@ using Xamarin.Forms.Xaml;
 namespace GanbariGate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FPage : ContentPage
+    public partial class DecksPage
     {
-        public FPage()
+        public DecksPage()
         {
             InitializeComponent();
         }
 
-        private void AddData(object sender, EventArgs e)
+        private void AddItem_Clicked(object sender, EventArgs e)
         {
-            var db = new SQLiteConnection("SQLite.sql");
-            db.CreateTable<TestDatabaseTable>();
-            
-            var newData = new TestDatabaseTable("New data 1");
-            db.Insert(newData);
+            throw new NotImplementedException();
+        }
+
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

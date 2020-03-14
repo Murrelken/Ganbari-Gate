@@ -17,10 +17,8 @@ namespace GanbariGate
         {
             InitializeComponent();
 
-            if (UseMockDataStore)
-                DependencyService.Register<MockDataStore>();
-            else
-                DependencyService.Register<AzureDataStore>();
+            DependencyService.Register<ItemsDataStore>();
+            DependencyService.Register<DecksDataStore>();
 
             MainPage = new MainPage();
         }

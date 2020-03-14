@@ -8,7 +8,7 @@ using GanbariGate.Models;
 
 namespace GanbariGate.Services
 {
-    public class AzureDataStore : IDataStore<Item>
+    public class AzureDataStore // : IDataStore<Item>
     {
         HttpClient client;
         IEnumerable<Item> items;

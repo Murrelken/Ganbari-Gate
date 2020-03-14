@@ -2,9 +2,13 @@
 
 namespace GanbariGate.Models
 {
-    public class Item
+    public class Item : BaseEntity
     {
-        public string Id { get; set; }
+        //For SQLite
+        public Item()
+        {
+        }
+
         public string Text { get; set; }
         public string Description { get; set; }
     }

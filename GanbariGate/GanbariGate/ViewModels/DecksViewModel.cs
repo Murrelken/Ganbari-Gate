@@ -1,33 +1,31 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
-using Xamarin.Forms;
-
 using GanbariGate.Models;
 using GanbariGate.Services;
 using GanbariGate.Views;
+using Xamarin.Forms;
 
 namespace GanbariGate.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class DecksViewModel : BaseViewModel
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-        public ObservableCollection<Item> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        public IDataStore<Deck> DataStore => DependencyService.Get<IDataStore<Deck>>();
+        public ObservableCollection<Deck> Decks { get; set; }
+        public Command LoadDecksCommand { get; set; }
 
-        public ItemsViewModel()
+        public DecksViewModel()
         {
             Title = "Browse";
-            Items = new ObservableCollection<Item>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            Decks = new ObservableCollection<Deck>();
+            LoadDecksCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            MessagingCenter.Subscribe<NewItemPage, Deck>(this, "AddItem", async (obj, deck) =>
             {
-                var newItem = item;
-                Items.Add(newItem);
-                await DataStore.AddItemAsync(newItem);
+                var newDeck = deck;
+                Decks.Add(newDeck);
+                await DataStore.AddItemAsync(newDeck);
             });
         }
 
@@ -40,11 +38,11 @@ namespace GanbariGate.ViewModels
 
             try
             {
-                Items.Clear();
+                Decks.Clear();
                 var items = await DataStore.GetItemsAsync();
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    Decks.Add(item);
                 }
             }
             catch (Exception ex)

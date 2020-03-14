@@ -20,7 +20,7 @@ namespace GanbariGate.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.DevelopmentTest, Title="Add data" },
+                new HomeMenuItem {Id = MenuItemType.Decks, Title="Decks" },
                 new HomeMenuItem {Id = MenuItemType.DevelopmentTest2, Title="Receive" },
             };
 

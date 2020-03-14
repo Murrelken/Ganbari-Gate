@@ -32,8 +32,8 @@ namespace GanbariGate.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
-                    case (int)MenuItemType.DevelopmentTest:
-                        MenuPages.Add(id, new NavigationPage(new FPage()));
+                    case (int)MenuItemType.Decks:
+                        MenuPages.Add(id, new NavigationPage(new DecksPage()));
                         break;
                     case (int)MenuItemType.DevelopmentTest2:
                         MenuPages.Add(id, new NavigationPage(new SPage()));

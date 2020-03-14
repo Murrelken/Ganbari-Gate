@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.6.292" />
+    <PackageReference Include="SQLite-Net.Extensions.Readers" Version="2019.10930.3" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />  
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>

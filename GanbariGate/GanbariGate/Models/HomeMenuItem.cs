@@ -8,7 +8,7 @@ namespace GanbariGate.Models
     {
         Browse,
         About,
-        DevelopmentTest,
+        Decks,
         DevelopmentTest2,
     }
     public class HomeMenuItem

@@ -21,7 +21,7 @@ namespace GanbariGate.ViewModels
             Decks = new ObservableCollection<Deck>();
             LoadDecksCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewItemPage, Deck>(this, "AddItem", async (obj, deck) =>
+            MessagingCenter.Subscribe<NewDeckPage, Deck>(this, "AddDeck", async (obj, deck) =>
             {
                 var newDeck = deck;
                 Decks.Add(newDeck);

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GanbariGate.Views.DecksPage"
@@ -8,18 +9,18 @@
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked">
             <ToolbarItem.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="UWP" Value="add.png"/>
+                    <On Platform="UWP" Value="add.png" />
                 </OnPlatform>
             </ToolbarItem.Icon>
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <ListView x:Name="ItemsListView"
-                  ItemsSource="{Binding Items}"
+        <ListView x:Name="DecksListView"
+                  ItemsSource="{Binding Decks}"
                   VerticalOptions="FillAndExpand"
                   HasUnevenRows="true"
-                  RefreshCommand="{Binding LoadItemsCommand}"
+                  RefreshCommand="{Binding LoadDecksCommand}"
                   IsPullToRefreshEnabled="true"
                   IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                   CachingStrategy="RecycleElement"
@@ -28,14 +29,10 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Text}" 
-                                   LineBreakMode="NoWrap" 
-                                   Style="{DynamicResource ListItemTextStyle}" 
-                                   FontSize="16" />
-                            <Label Text="{Binding Description}" 
+                            <Label Text="{Binding Name}"
                                    LineBreakMode="NoWrap"
-                                   Style="{DynamicResource ListItemDetailTextStyle}"
-                                   FontSize="13" />
+                                   Style="{DynamicResource ListItemTextStyle}"
+                                   FontSize="16" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

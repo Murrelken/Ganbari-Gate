@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GanbariGate.Models;
 using GanbariGate.Services;
+using GanbariGate.ViewModels;
 using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,19 +16,38 @@ namespace GanbariGate.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DecksPage
     {
+        DecksViewModel viewModel;
+
         public DecksPage()
         {
             InitializeComponent();
+
+            BindingContext = viewModel = new DecksViewModel();
         }
 
-        private void AddItem_Clicked(object sender, EventArgs e)
+        async void AddItem_Clicked(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            await Navigation.PushModalAsync(new NavigationPage(new NewDeckPage()));
         }
 
-        private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            throw new NotImplementedException();
+            var item = args.SelectedItem as Deck;
+            if (item == null)
+                return;
+
+            await Navigation.PushAsync(new DeckDetailPage(new DeckDetailViewModel(item)));
+
+            // Manually deselect item.
+            DecksListView.SelectedItem = null;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (viewModel.Decks.Count == 0)
+                viewModel.LoadDecksCommand.Execute(null);
         }
     }
 }

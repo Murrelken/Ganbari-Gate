@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GanbariGate.Services;
@@ -23,6 +24,19 @@ namespace GanbariGate
 
         protected override void OnStart()
         {
+            try
+            {
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "testDB.db3");
+                var bytes = File.ReadAllBytes(path);
+                var fileCopyName = $"/sdcard/Database_{DateTime.Now:dd-MM-yyyy_HH-mm-ss-tt}.db3";
+                File.WriteAllBytes(fileCopyName, bytes);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
+            }
+
             // Handle when your app starts
         }
 

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using GanbariGate.Models;
 using SQLite;
@@ -42,6 +44,15 @@ namespace GanbariGate.Services
         public async Task<IEnumerable<T>> GetItemsAsync()
         {
             var result = await _connection.Table<T>().ToArrayAsync();
+            return result;
+        }
+
+        public async Task<IEnumerable<T>> GetItemsByConditionAsync(Expression<Func<T, bool>> condition)
+        {
+            var result = await _connection
+                .Table<T>()
+                .Where(condition)
+                .ToArrayAsync();
             return result;
         }
     }

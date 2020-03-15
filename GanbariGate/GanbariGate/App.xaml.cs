@@ -18,6 +18,7 @@ namespace GanbariGate
             InitializeComponent();
 
             DependencyService.Register<DecksDataStore>();
+            DependencyService.Register<CardsDataStore>();
 
             MainPage = new MainPage();
         }

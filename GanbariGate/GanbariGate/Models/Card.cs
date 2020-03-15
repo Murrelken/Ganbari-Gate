@@ -10,14 +10,14 @@ namespace GanbariGate.Models
         {
         }
      
-        public Card(string frontSide, string hiddenSide, long deckId)
+        public Card(string visibleSide, string hiddenSide, long deckId)
         {
-            FrontSide = frontSide;
+            VisibleSide = visibleSide;
             HiddenSide = hiddenSide;
             DeckId = deckId;
         }
 
-        public string FrontSide { get; set; }
+        public string VisibleSide { get; set; }
         
         public string HiddenSide { get; set; }
         

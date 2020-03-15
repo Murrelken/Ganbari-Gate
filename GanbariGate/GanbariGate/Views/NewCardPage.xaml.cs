@@ -10,26 +10,26 @@ using Xamarin.Forms.Xaml;
 namespace GanbariGate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewDeckPage
+    public partial class NewCardPage
     {
-        public Deck Deck { get; set; }
-
-        public NewDeckPage()
+        public Card Card { get; set; }
+        
+        public NewCardPage(Deck deck)
         {
             InitializeComponent();
 
-            Deck = new Deck("Deck name");
+            Card = new Card("Visible", "Hidden", deck.Id);
 
             BindingContext = this;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddDeck", Deck);
+            MessagingCenter.Send(this, "AddCard", Card);
             await Navigation.PopModalAsync();
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
+        private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }

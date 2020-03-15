@@ -14,15 +14,15 @@ using Xamarin.Forms.Xaml;
 namespace GanbariGate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DecksPage
+    public partial class DecksPage : ContentPage
     {
         DecksViewModel viewModel;
 
         public DecksPage()
         {
-            InitializeComponent();
-
             BindingContext = viewModel = new DecksViewModel();
+            
+            InitializeComponent();
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -48,6 +48,16 @@ namespace GanbariGate.Views
 
             if (viewModel.Decks.Count == 0)
                 viewModel.LoadDecksCommand.Execute(null);
+        }
+        
+        public async void Cards (object sender, EventArgs e)
+        {
+            var mi = ((MenuItem)sender);
+            var deck = mi.BindingContext as Deck;
+            if(deck == null)
+                return;
+            
+            await Navigation.PushAsync(new CardsPage(deck));
         }
     }
 }

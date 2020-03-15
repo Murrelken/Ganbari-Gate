@@ -5,24 +5,24 @@ using Xamarin.Forms.Xaml;
 namespace GanbariGate.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DeckDetailPage
+    public partial class CardDetailPage
     {
-        DeckDetailViewModel viewModel;
+        CardDetailViewModel viewModel;
 
-        public DeckDetailPage(DeckDetailViewModel viewModel)
+        public CardDetailPage(CardDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        public DeckDetailPage()
+        public CardDetailPage()
         {
             InitializeComponent();
 
-            var fakeDeck = new Deck("This is a fake element");
+            var fakeCard = new Card();
 
-            viewModel = new DeckDetailViewModel(fakeDeck);
+            viewModel = new CardDetailViewModel(fakeCard);
             BindingContext = viewModel;
         }
     }

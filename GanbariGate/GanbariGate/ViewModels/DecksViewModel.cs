@@ -2,6 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using GanbariGate.Models;
 using GanbariGate.Services;
 using GanbariGate.Views;
@@ -17,13 +18,12 @@ namespace GanbariGate.ViewModels
 
         public DecksViewModel()
         {
-            Title = "Browse";
+            Title = "Decks";
             Decks = new ObservableCollection<Deck>();
             LoadDecksCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            MessagingCenter.Subscribe<NewDeckPage, Deck>(this, "AddDeck", async (obj, deck) =>
+            MessagingCenter.Subscribe<NewDeckPage, Deck>(this, "AddDeck", async (obj, newDeck) =>
             {
-                var newDeck = deck;
                 Decks.Add(newDeck);
                 await DataStore.AddItemAsync(newDeck);
             });
@@ -54,5 +54,10 @@ namespace GanbariGate.ViewModels
                 IsBusy = false;
             }
         }
+        
+        // public ICommand CardsCommand => new Command<object>((item) =>
+        // {
+        //     var message = $"Edit command was called on: {item}";
+        // });
     }
 }

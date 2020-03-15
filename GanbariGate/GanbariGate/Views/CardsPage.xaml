@@ -2,9 +2,9 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GanbariGate.Views.DecksPage"
+             x:Class="GanbariGate.Views.CardsPage"
              Title="{Binding Title}"
-             x:Name="BrowseItemsPage">
+             x:Name="Cards">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add new" Clicked="AddItem_Clicked">
             <ToolbarItem.Icon>
@@ -16,11 +16,11 @@
     </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <ListView x:Name="DecksListView"
-                  ItemsSource="{Binding Decks}"
+        <ListView x:Name="CardsListView"
+                  ItemsSource="{Binding Cards}"
                   VerticalOptions="FillAndExpand"
                   HasUnevenRows="true"
-                  RefreshCommand="{Binding LoadDecksCommand}"
+                  RefreshCommand="{Binding LoadCardsCommand}"
                   IsPullToRefreshEnabled="true"
                   IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                   CachingStrategy="RecycleElement"
@@ -28,13 +28,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <ViewCell.ContextActions>
-                            <MenuItem Text="Cards"
-                                      Clicked="Cards"
-                                      CommandParameter="{Binding .}" /><!-- Command="{Binding  Source={x:Reference Name=DecksListView}, Path=BindingContext.CardsCommand}" -->
-                        </ViewCell.ContextActions>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Name}"
+                            <Label Text="{Binding VisibleSide}"
                                    LineBreakMode="NoWrap"
                                    Style="{DynamicResource ListItemTextStyle}"
                                    FontSize="16" />

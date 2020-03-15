@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GanbariGate.Views.CardDetailPage"
+             Title="{Binding Title}">
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="VisibleSide:" FontSize="Medium" />
+        <Label Text="{Binding Card.VisibleSide}" FontSize="Small"/>
+        <Label Text="HiddenSide:" FontSize="Medium" />
+        <Label Text="{Binding Card.HiddenSide}" FontSize="Small"/>
+    </StackLayout>
+</ContentPage>

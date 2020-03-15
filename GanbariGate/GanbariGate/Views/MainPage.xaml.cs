@@ -17,7 +17,7 @@ namespace GanbariGate.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Decks, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -26,17 +26,11 @@ namespace GanbariGate.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
-                        break;
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.Decks:
                         MenuPages.Add(id, new NavigationPage(new DecksPage()));
-                        break;
-                    case (int)MenuItemType.DevelopmentTest2:
-                        MenuPages.Add(id, new NavigationPage(new SPage()));
                         break;
                 }
             }

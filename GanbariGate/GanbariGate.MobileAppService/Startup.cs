@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GanbariGate.MobileAppService.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 
 using GanbariGate.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GanbariGate.MobileAppService
 {
@@ -29,6 +31,11 @@ namespace GanbariGate.MobileAppService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
+            services.AddDbContext<GanbariGateContext>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("Dev"));
+            });
+            
             services.AddMvc();
             services.AddSingleton<IItemRepository, ItemRepository>();
 

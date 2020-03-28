@@ -17,11 +17,21 @@ namespace GanbariGate.Models
             DeckId = deckId;
         }
 
+        // For EF Core
+        public Card(string visibleSide, string hiddenSide, Deck deck)
+        {
+            VisibleSide = visibleSide;
+            HiddenSide = hiddenSide;
+            Deck = deck;
+        }
+
         public string VisibleSide { get; set; }
         
         public string HiddenSide { get; set; }
         
         [ForeignKey(typeof(Deck))]
         public long DeckId { get; set; }
+        
+        public virtual Deck Deck { get; set; }
     }
 }

@@ -18,5 +18,7 @@ namespace GanbariGate.Models
         }
 
         public string Name { get; set; }
+        
+        public virtual IEnumerable<Card> Cards { get; set; }
     }
 }

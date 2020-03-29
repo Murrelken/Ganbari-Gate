@@ -20,6 +20,7 @@ namespace GanbariGate.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Decks, Title="Decks" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+                new HomeMenuItem {Id = MenuItemType.DecksFromWebApi, Title="Decks from server" },
             };
 
             ListViewMenu.ItemsSource = menuItems;

@@ -8,6 +8,7 @@ namespace GanbariGate.Models
     {
         About,
         Decks,
+        DecksFromWebApi,
     }
     public class HomeMenuItem
     {

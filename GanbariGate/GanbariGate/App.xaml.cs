@@ -11,7 +11,7 @@ namespace GanbariGate
     public partial class App : Application
     {
         //TODO: Replace with *.azurewebsites.net url after deploying backend to Azure
-        public static string AzureBackendUrl = "http://localhost:5000";
+        public const string AzureBackendUrl = "http://192.168.1.62:5000";
 
         public App()
         {
@@ -19,6 +19,7 @@ namespace GanbariGate
 
             DependencyService.Register<DecksDataStore>();
             DependencyService.Register<CardsDataStore>();
+            DependencyService.Register<DecksWebApiDataStore>();
 
             MainPage = new MainPage();
         }

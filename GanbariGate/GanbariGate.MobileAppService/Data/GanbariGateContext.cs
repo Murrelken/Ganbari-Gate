@@ -1,4 +1,4 @@
-using GanbariGate.Models;
+using GanbariGate.MobileAppService.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GanbariGate.MobileAppService.Data

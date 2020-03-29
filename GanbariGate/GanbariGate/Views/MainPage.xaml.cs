@@ -32,6 +32,9 @@ namespace GanbariGate.Views
                     case (int)MenuItemType.Decks:
                         MenuPages.Add(id, new NavigationPage(new DecksPage()));
                         break;
+                    case (int)MenuItemType.DecksFromWebApi:
+                        MenuPages.Add(id, new NavigationPage(new DecksFromWebApiPage()));
+                        break;
                 }
             }
 

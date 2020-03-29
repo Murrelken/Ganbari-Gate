@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using GanbariGate.MobileAppService.Data;
+using GanbariGate.MobileAppService.Data.Entities;
 using Microsoft.AspNetCore.Mvc;
-using GanbariGate.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GanbariGate.Controllers

@@ -1,22 +1,21 @@
 using System.Collections.Generic;
-using SQLite;
-using SQLiteNetExtensions.Attributes;
 
-namespace GanbariGate.Models
+namespace GanbariGate.MobileAppService.Data.Entities
 {
-    [Table(nameof(Deck))]
     public class Deck : BaseEntity
     {
-        //For SQLite
-        public Deck()
+        protected Deck()
         {
+            
         }
-
+        
         public Deck(string name)
         {
             Name = name;
         }
 
         public string Name { get; set; }
+        
+        public virtual IEnumerable<Card> Cards { get; set; }
     }
 }

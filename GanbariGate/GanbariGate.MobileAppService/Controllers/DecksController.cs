@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using GanbariGate.MobileAppService.Data;
 using Microsoft.AspNetCore.Mvc;
 using GanbariGate.Models;
@@ -9,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 namespace GanbariGate.Controllers
 {
     [Route("api/[controller]")]
-    public class ItemController : Controller
+    public class DecksController : Controller
     {
         private readonly GanbariGateContext _dbContext;
 
-        public ItemController(GanbariGateContext dbContext)
+        public DecksController(GanbariGateContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -64,62 +62,48 @@ namespace GanbariGate.Controllers
             //         .ToArray();
             // }
 
-            var list = new List<int> {1, 2, 3};
-
             return Ok(decks);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetItem(string id)
+        public IActionResult GetItem(long id)
+            => Ok(_dbContext
+                .Set<Deck>()
+                .Find(id));
+
+        [HttpPost]
+        public IActionResult Create([FromBody] Deck deck)
         {
-            // Item item = ItemRepository.Get(id);
+            _dbContext.Add(deck);
+            _dbContext.SaveChanges();
+
             return Ok();
         }
 
-        [HttpPost]
-        public IActionResult Create([FromBody] Item item)
+        [HttpPut("{id}")]
+        public IActionResult Edit([FromBody] Deck deck, long id)
         {
-            // try
-            // {
-            //     if (item == null || !ModelState.IsValid)
-            //     {
-            //         return BadRequest("Invalid State");
-            //     }
-            //
-            //     ItemRepository.Add(item);
-            // }
-            // catch (Exception)
-            // {
-            //     return BadRequest("Error while creating");
-            // }
+            var existingDeck = _dbContext
+                .Set<Deck>()
+                .Find(id);
 
-            return Ok(item);
-        }
+            existingDeck.Cards = deck.Cards;
+            existingDeck.Name = deck.Name;
 
-        [HttpPut]
-        public IActionResult Edit([FromBody] Item item)
-        {
-            // try
-            // {
-            //     if (item == null || !ModelState.IsValid)
-            //     {
-            //         return BadRequest("Invalid State");
-            //     }
-            //
-            //     ItemRepository.Update(item);
-            // }
-            // catch (Exception)
-            // {
-            //     return BadRequest("Error while creating");
-            // }
+            _dbContext.SaveChanges();
 
-            return Ok(item);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
+        public IActionResult Delete(long id)
         {
-            // ItemRepository.Remove(id);
+            var existingDeck = _dbContext
+                .Set<Deck>()
+                .Find(id);
+
+            _dbContext.Remove(existingDeck);
+            
             return Ok();
         }
     }
